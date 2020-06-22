@@ -1,0 +1,23 @@
+
+# If set to true players won't receive any messages.
+# For example: "YOU GOT SLAPPED!"
+silentTroll: false
+
+# Here you can edit the commands
+commands:
+  slap:
+    name: "slap"
+    description: "Slap someone!"
+    permission: "llamatroll.slap"
+  forcedrop:
+    name: "forcedrop"
+    description: "Force a player to drop his current item"
+    permission: "llamatroll.forcedrop"
+  dropall:
+    name: "dropall"
+    description: "Force a player to drop all his items."
+    permission: "llamatroll.dropall"
+  spin:
+    name: "spin"
+    description: "Spin a player."
+    permission: "llamatroll.spin"

@@ -1,0 +1,33 @@
+prefix: "§8» §eLlamaTroll §8| §7"
+
+# General Messages
+# [0] = usage of command
+usage: "§c§lUsage: §r[0]"
+
+# Error messages
+invalid-number: "§cPlease provide a valid number."
+player-not-found: "§cCouldn't find a player with this name."
+no-permission: "Unknown command. Try /help for a list of commands"
+
+# /slap
+# [0] = player
+slapped: "§cYou've slapped [0]."
+# This message can be disabled if you set silentTroll to true.
+slap: "§cYOU GOT SLAPPED!"
+
+# /forcedrop
+# [0] = player
+dropped: "§cYou forced [0] to drop his item."
+# This message can be disabled if you set silentTroll to true.
+drop: "§cOops! Your hand seems to be sweaty."
+
+# /dropall
+# [0] = player
+droppedAll: "§cYou forced [0] to drop all his item."
+# This message can be disabled if you set silentTroll to true.
+dropAll: "§cOops! You should fix the hole in your backpack!"
+
+# /spin
+spinned: "§c[0] is now spinning."
+# This message can be disabled if you set silentTroll to true.
+spin: "§cWoohooo!"
