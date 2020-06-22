@@ -9,40 +9,43 @@ import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.ConfigSection;
 import net.lldv.llamatroll.LlamaTroll;
 import net.lldv.llamatroll.components.language.Language;
-import net.lldv.llamatroll.tasks.SpinTask;
+import net.lldv.llamatroll.tasks.DrunkenTask;
 
-public class SpinCommand extends PluginCommand<LlamaTroll> {
+public class DrunkenCommand extends PluginCommand<LlamaTroll> {
 
-    public SpinCommand(LlamaTroll owner, ConfigSection c) {
+    public DrunkenCommand(LlamaTroll owner, ConfigSection c) {
         super(c.getString("name"), owner);
         setDescription(c.getString("description"));
         setPermission(c.getString("permission"));
-        setUsage(Language.getNP("usage", "/" + getName() + " <player>"));
+        setUsage(Language.getNP("usage", "/" + getName() + " <player> <seconds>"));
         commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TARGET, false)
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("seconds", CommandParamType.INT, false)
         });
     }
 
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (sender.hasPermission(getPermission())) {
-
-            if (args.length >= 1) {
+            if (args.length >= 2) {
 
                 Player target = Server.getInstance().getPlayer(args[0]);
+
                 if (target == null) {
                     sender.sendMessage(Language.get("player-not-found"));
-                    return false;
+                    return true;
                 }
 
-                Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new SpinTask(target), 1);
-
-                if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("spin"));
-                sender.sendMessage(Language.get("spinned", target.getName()));
+                try {
+                    int seconds = Integer.parseInt(args[1]);
+                    sender.sendMessage(Language.get("drunken", target.getName()));
+                    Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new DrunkenTask(target, seconds), 20);
+                } catch (NumberFormatException ex) {
+                    sender.sendMessage(Language.get("invalid-number"));
+                }
 
             } else sender.sendMessage(getUsage());
-
         } else sender.sendMessage(Language.getNP("no-permission"));
-        return false;
+        return true;
     }
 }

@@ -21,3 +21,11 @@ commands:
     name: "spin"
     description: "Spin a player."
     permission: "llamatroll.spin"
+  silenttroll:
+    name: "silenttroll"
+    description: "Turn on/off Silenttroll."
+    permission: "llamatroll.silenttroll"
+  drunken:
+    name: "drunken"
+    description: "Make someone drunk."
+    permission: "llamatroll.drunken"

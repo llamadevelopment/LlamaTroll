@@ -4,6 +4,8 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.PluginCommand;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.ConfigSection;
 import net.lldv.llamatroll.LlamaTroll;
 import net.lldv.llamatroll.components.language.Language;
@@ -15,6 +17,9 @@ public class DropallCommand extends PluginCommand<LlamaTroll> {
         setDescription(c.getString("description"));
         setPermission(c.getString("permission"));
         setUsage(Language.getNP("usage", "/" + getName() + " <player>"));
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
     @Override
