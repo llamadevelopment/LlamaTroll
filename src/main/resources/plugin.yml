@@ -1,0 +1,6 @@
+name: LlamaTroll
+author: Proxma
+website: lldv.net
+version: 1.0.0
+main: net.lldv.llamatroll.LlamaTroll
+api: 1.0.0
