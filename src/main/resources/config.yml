@@ -29,3 +29,15 @@ commands:
     name: "drunken"
     description: "Make someone drunk."
     permission: "llamatroll.drunken"
+  ignite:
+    name: "ignite"
+    description: "Set a player on fire."
+    permission: "llamatroll.ignite"
+  freeze:
+    name: "freeze"
+    description: "Freeze a player."
+    permission: "llamatroll.freeze"
+  unfreeze:
+    name: "unfreeze"
+    description: "Unfreeze a player."
+    permission: "llamatroll.unfreeze"

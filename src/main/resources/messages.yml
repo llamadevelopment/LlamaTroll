@@ -39,3 +39,15 @@ unsilent: "§cYou've disabled SilentTroll Mode. \n§7Note: You can change this v
 # /drunken
 drunken: "§a[0] is now drunken."
 drunk: "§cOh, I think that was too much!"
+
+# /ignite
+ignited: "§a[0] is now on fire."
+ignite: "§cIt's really hot..."
+
+# /freeze
+freezed: "§a[0] is now frozen."
+freeze: "§bBrr... It's so cold... I can't move!"
+
+# /unfreeze
+unfreezed: "§a[0] is now unfrozen."
+unfreeze: "§cIt's getting warmer... I can move again."

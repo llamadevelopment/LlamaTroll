@@ -31,6 +31,9 @@ public class LlamaTroll extends PluginBase {
         commandMap.register("spin", new SpinCommand(this, c.getSection("commands.spin")));
         commandMap.register("silenttroll", new SilenttrollCommand(this, c.getSection("commands.silenttroll")));
         commandMap.register("drunken", new DrunkenCommand(this, c.getSection("commands.drunken")));
+        commandMap.register("ignite", new IgniteCommand(this, c.getSection("commands.ignite")));
+        commandMap.register("freeze", new FreezeCommand(this, c.getSection("commands.freeze")));
+        commandMap.register("unfreeze", new UnfreezeCommand(this, c.getSection("commands.unfreeze")));
     }
 
     public static LlamaTroll getInstance() {
