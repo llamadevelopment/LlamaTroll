@@ -39,7 +39,7 @@ public class DropallCommand extends PluginCommand<LlamaTroll> {
                     target.dropItem(item);
                 });
 
-                target.sendMessage(Language.getNP("dropAll"));
+                if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("dropAll"));
                 sender.sendMessage(Language.get("droppedAll", target.getName()));
 
             } else sender.sendMessage(getUsage());
