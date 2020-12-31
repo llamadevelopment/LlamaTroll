@@ -39,7 +39,7 @@ public class IgniteCommand extends PluginCommand<LlamaTroll> {
                     int seconds = Integer.parseInt(args[1]);
                     sender.sendMessage(Language.get("ignited", target.getName()));
                     target.setOnFire(seconds);
-                    if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("ignite"));
+                    if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("ignite"));
                 } catch (NumberFormatException ex) {
                     sender.sendMessage(Language.get("invalid-number"));
                 }

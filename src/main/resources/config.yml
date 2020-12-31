@@ -41,3 +41,7 @@ commands:
     name: "unfreeze"
     description: "Unfreeze a player."
     permission: "llamatroll.unfreeze"
+  rocket:
+    name: "rocket"
+    description: "Launch a player."
+    permission: "llamatroll.rocket"

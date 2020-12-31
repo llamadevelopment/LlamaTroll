@@ -51,3 +51,7 @@ freeze: "§bBrr... It's so cold... I can't move!"
 # /unfreeze
 unfreezed: "§a[0] is now unfrozen."
 unfreeze: "§cIt's getting warmer... I can move again."
+
+# /rocket
+launched: "§a[0] is now flying into the sky."
+launch: "§cWoohooo! I'm flying!"

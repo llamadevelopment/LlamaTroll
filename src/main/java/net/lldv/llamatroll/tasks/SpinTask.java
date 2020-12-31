@@ -10,10 +10,12 @@ public class SpinTask implements Runnable {
     private final Player target;
     private int done = 0;
     private double playerYaw;
+    private final LlamaTroll plugin;
 
-    public SpinTask(Player target) {
+    public SpinTask(Player target, LlamaTroll plugin) {
         this.target = target;
         this.playerYaw = target.getYaw();
+        this.plugin = plugin;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class SpinTask implements Runnable {
         done++;
 
         if (150 > done)
-            Server.getInstance().getScheduler().scheduleDelayedTask(LlamaTroll.getInstance(), this, 1);
+            Server.getInstance().getScheduler().scheduleDelayedTask(this.plugin, this, 1);
     }
 
 }

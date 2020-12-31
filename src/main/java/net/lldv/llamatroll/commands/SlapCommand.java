@@ -47,7 +47,7 @@ public class SlapCommand extends PluginCommand<LlamaTroll> {
                     }
                 }
 
-                Server.getInstance().getScheduler().scheduleDelayedTask(LlamaTroll.getInstance(), new SlapTask(target, times), 1);
+                Server.getInstance().getScheduler().scheduleDelayedTask(this.getPlugin(), new SlapTask(target, times, this.getPlugin()), 1);
                 sender.sendMessage(Language.get("slapped", target.getName()));
             } else sender.sendMessage(getUsage());
         } else sender.sendMessage(Language.getNP("no-permission"));

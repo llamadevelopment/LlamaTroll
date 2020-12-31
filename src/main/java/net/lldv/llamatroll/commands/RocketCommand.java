@@ -9,41 +9,43 @@ import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.ConfigSection;
 import net.lldv.llamatroll.LlamaTroll;
 import net.lldv.llamatroll.components.language.Language;
+import net.lldv.llamatroll.tasks.RocketTask;
 
-public class DropallCommand extends PluginCommand<LlamaTroll> {
+/**
+ * @author LlamaDevelopment
+ * @project LlamaTroll
+ * @website http://llamadevelopment.net/
+ */
+public class RocketCommand extends PluginCommand<LlamaTroll> {
 
-    public DropallCommand(LlamaTroll owner, ConfigSection c) {
+    public RocketCommand(LlamaTroll owner, ConfigSection c) {
         super(c.getString("name"), owner);
         setDescription(c.getString("description"));
         setPermission(c.getString("permission"));
         setUsage(Language.getNP("usage", "/" + getName() + " <player>"));
         commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TARGET, false)
+                new CommandParameter("player", CommandParamType.TARGET, false),
         });
     }
 
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (sender.hasPermission(getPermission())) {
-
             if (args.length >= 1) {
 
-                Player target = Server.getInstance().getPlayer(args[0]);
+                final Player target = Server.getInstance().getPlayer(args[0]);
+
                 if (target == null) {
                     sender.sendMessage(Language.get("player-not-found"));
-                    return false;
+                    return true;
                 }
 
-                target.getInventory().getContents().forEach((i, item) -> {
-                    target.getInventory().clear(i);
-                    target.dropItem(item);
-                });
+                if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("launch"));
+                sender.sendMessage(Language.get("launched", target.getName()));
 
-                if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("dropAll"));
-                sender.sendMessage(Language.get("droppedAll", target.getName()));
+                getPlugin().getServer().getScheduler().scheduleRepeatingTask(getPlugin(), new RocketTask(target), 1);
 
             } else sender.sendMessage(getUsage());
-
         } else sender.sendMessage(Language.getNP("no-permission"));
         return true;
     }
