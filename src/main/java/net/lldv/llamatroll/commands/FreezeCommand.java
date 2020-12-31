@@ -35,7 +35,7 @@ public class FreezeCommand extends PluginCommand<LlamaTroll> {
                 }
 
                 target.setImmobile(true);
-                if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("freeze"));
+                if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("freeze"));
                 sender.sendMessage(Language.get("freezed", target.getName()));
 
             } else sender.sendMessage(getUsage());

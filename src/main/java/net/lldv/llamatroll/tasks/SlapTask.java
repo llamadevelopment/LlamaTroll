@@ -11,23 +11,25 @@ public class SlapTask implements Runnable {
     private final int times;
     private final Player target;
     private int done = 0;
+    private final LlamaTroll plugin;
 
-    public SlapTask(Player target, int times) {
+    public SlapTask(Player target, int times, LlamaTroll plugin) {
         this.times = times;
         this.target = target;
+        this.plugin = plugin;
     }
 
     @Override
     public void run() {
 
         target.setMotion(new Vector3((Math.random() * 2) - 1, Math.random(), (Math.random() * 2) - 1));
-        if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("slap"));
+        if (!this.plugin.isSilentTroll()) target.sendMessage(Language.getNP("slap"));
         target.attack(0);
 
         done++;
 
         if (times > done)
-            Server.getInstance().getScheduler().scheduleDelayedTask(LlamaTroll.getInstance(), this, 20);
+            Server.getInstance().getScheduler().scheduleDelayedTask(this.plugin, this, 20);
 
 
     }

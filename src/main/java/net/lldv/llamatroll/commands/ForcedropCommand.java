@@ -41,7 +41,7 @@ public class ForcedropCommand extends PluginCommand<LlamaTroll> {
                 target.getInventory().clear(target.getInventory().getHeldItemIndex());
                 target.dropItem(item);
 
-                if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("drop"));
+                if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("drop"));
                 sender.sendMessage(Language.get("dropped", target.getName()));
 
             } else sender.sendMessage(getUsage());

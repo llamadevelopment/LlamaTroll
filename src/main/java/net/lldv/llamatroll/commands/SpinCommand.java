@@ -35,9 +35,9 @@ public class SpinCommand extends PluginCommand<LlamaTroll> {
                     return false;
                 }
 
-                Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new SpinTask(target), 1);
+                Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new SpinTask(target, this.getPlugin()), 1);
 
-                if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("spin"));
+                if (!this.getPlugin().isSilentTroll()) target.sendMessage(Language.getNP("spin"));
                 sender.sendMessage(Language.get("spinned", target.getName()));
 
             } else sender.sendMessage(getUsage());

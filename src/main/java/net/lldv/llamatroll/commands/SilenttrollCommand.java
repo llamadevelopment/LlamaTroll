@@ -26,22 +26,22 @@ public class SilenttrollCommand extends PluginCommand<LlamaTroll> {
             if (args.length >= 1) {
                 switch (args[0].toLowerCase()) {
                     case "on":
-                        LlamaTroll.silentTroll = true;
+                        this.getPlugin().setSilentTroll(true);
                         sender.sendMessage(Language.get("silent"));
                         return true;
                     case "off":
-                        LlamaTroll.silentTroll = false;
+                        this.getPlugin().setSilentTroll(false);
                         sender.sendMessage(Language.get("unsilent"));
                         return true;
                     default:
                         sender.sendMessage(getUsage());
                 }
             } else {
-                if (LlamaTroll.silentTroll) {
-                    LlamaTroll.silentTroll = false;
+                if (this.getPlugin().isSilentTroll()) {
+                    this.getPlugin().setSilentTroll(false);
                     sender.sendMessage(Language.get("unsilent"));
                 } else {
-                    LlamaTroll.silentTroll = true;
+                    this.getPlugin().setSilentTroll(true);
                     sender.sendMessage(Language.get("silent"));
                 }
             }

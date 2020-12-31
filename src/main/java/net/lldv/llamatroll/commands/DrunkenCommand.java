@@ -39,7 +39,7 @@ public class DrunkenCommand extends PluginCommand<LlamaTroll> {
                 try {
                     int seconds = Integer.parseInt(args[1]);
                     sender.sendMessage(Language.get("drunken", target.getName()));
-                    Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new DrunkenTask(target, seconds), 20);
+                    Server.getInstance().getScheduler().scheduleDelayedTask(getPlugin(), new DrunkenTask(this.getPlugin(), target, seconds), 20);
                 } catch (NumberFormatException ex) {
                     sender.sendMessage(Language.get("invalid-number"));
                 }

@@ -12,14 +12,16 @@ public class DrunkenTask implements Runnable {
     private final Player target;
     private final int seconds;
     private int done = 0;
+    private final LlamaTroll plugin;
 
-    public DrunkenTask(Player target, int seconds) {
+    public DrunkenTask(LlamaTroll plugin, Player target, int seconds) {
         this.target = target;
         this.seconds = seconds;
+        this.plugin = plugin;
         target.addEffect(Effect.getEffect(Effect.NAUSEA).setDuration(seconds * 20));
         target.addEffect(Effect.getEffect(Effect.SLOWNESS).setDuration(seconds * 20));
         target.addEffect(Effect.getEffect(Effect.HUNGER).setDuration(seconds * 20));
-        if (!LlamaTroll.silentTroll) target.sendMessage(Language.getNP("drunk"));
+        if (!this.plugin.isSilentTroll()) target.sendMessage(Language.getNP("drunk"));
     }
 
     @Override
@@ -29,7 +31,7 @@ public class DrunkenTask implements Runnable {
         done++;
 
         if (seconds > done)
-            Server.getInstance().getScheduler().scheduleDelayedTask(LlamaTroll.getInstance(), this, 20);
+            Server.getInstance().getScheduler().scheduleDelayedTask(this.plugin, this, 20);
 
 
     }
